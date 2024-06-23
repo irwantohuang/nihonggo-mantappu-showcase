@@ -1,5 +1,6 @@
 <script setup lang="ts">
 // import MainView from './layouts/MainView.vue';
+import Overlay from './common/Overlay.vue';
 import MainLayout from './layouts/MainLayout.vue';
 </script>
 
@@ -8,6 +9,7 @@ import MainLayout from './layouts/MainLayout.vue';
     <router-link :to="{name: 'About'}">About</router-link> -->
 
   <!-- <MainView /> -->
+  <Overlay />
   <MainLayout />
 </template>
 

@@ -1,5 +1,4 @@
 import { Thumbnails } from "../types/Thumbnails/Thumbnails";
-import { Video } from "../types/Video";
 
 export const getThumbnailsUrl = (e: Thumbnails): string | undefined => {
     const screenWidth: number = window.innerWidth;

@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+@import './transitions.css';
 
 @tailwind base;
 @tailwind components;
@@ -16,7 +17,7 @@
 }
 
 .icon {
-    @apply transition-all duration-100 ease-in  rounded-sm font-bold flex items-center justify-center cursor-pointer
+    @apply transition-all duration-100 ease-in rounded-sm font-bold flex items-center justify-center cursor-pointer
 }
 
 .primary {
@@ -30,7 +31,7 @@
 /* text-sm px-4 py-1 rounded-sm flex items-center justify-center bg-primary text-primary-light font-medium */
 
 .btn {
-    @apply transition-all duration-300 ease-in px-4 py-1 rounded-sm flex items-center justify-center
+    @apply transition-all duration-300 ease-in px-4 py-1 rounded-sm flex items-center justify-center gap-2
 }
 
 .btn-primary {

@@ -1,0 +1,26 @@
+.slide-left-enter-active,
+.slide-left-leave-active {
+    @apply duration-500 transition-all ease-in-out transform
+}
+
+.slide-left-enter-from, .slide-left-leave-to {
+    @apply translate-x-[100%]
+}
+
+.slide-left-enter-to, .slide-left-leave-from {
+    @apply translate-x-0
+}
+
+
+.fade-up-enter-active,
+.fade-up-leave-active {
+    @apply duration-500 transition-all ease-in-out transform
+}
+
+.fade-up-enter-from, .fade-up-leave-to {
+    @apply translate-y-[-100%]
+}
+
+.fade-up-enter-to, .fade-up-leave-from {
+    @apply translate-y-0
+}

@@ -2,11 +2,14 @@
 import { ref } from 'vue';
 import { menu } from './../../data/menu'
 import NavMobile from './NavMobile.vue'
-import Overlay from './../../common/Overlay.vue'
 import Icon from '../../ui/Icon.vue';
+import { handleBaseOverlay } from '../../utils/overlayHelper'
 
 const hamburger = ref<boolean>(false);
-const toggleHamburger = () => hamburger.value = !hamburger.value;
+const toggleHamburger = () => {
+    hamburger.value = !hamburger.value;
+    handleBaseOverlay(hamburger.value ? 'open' : 'close')
+}
 </script>
 
 <template>
@@ -21,7 +24,6 @@ const toggleHamburger = () => hamburger.value = !hamburger.value;
                 <!-- Navigation Bar -->
                 <nav>
                     <Icon @click="toggleHamburger()" type="Secondary" icon="fa-solid fa-bars" class="lg:hidden text-3xl w-[30px] h-[30px]"/>
-                    <Overlay v-show="hamburger" @click="toggleHamburger()" />
                     <NavMobile :showMenu="hamburger" :listMenu="menu" @toggleHamburger="toggleHamburger" />
 
                     <ul class="hidden lg:flex h-full gap-8 items-center justify-center">

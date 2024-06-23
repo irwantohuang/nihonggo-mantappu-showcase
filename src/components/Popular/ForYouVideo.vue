@@ -4,7 +4,10 @@ import { Pagination } from 'swiper/modules'
 import { store } from '../../store/store';
 import { PlaylistItemRequest, assignPlaylistItemRequest } from '../../request/PlaylistItemRequest';
 import VideoCard from '../Video/VideoCard.vue'
-// import { getThumbnailsUrl } from '../../utils/thumbnailsHelper'
+import { Video } from '../../types/Video';
+import VideoDetail from '../Video/VideoDetail.vue';
+import { handleBaseOverlay } from '../../utils/overlayHelper';
+
 
 const request = ref<PlaylistItemRequest>(
     assignPlaylistItemRequest(
@@ -27,21 +30,32 @@ const swiperBreakpoint = ref(
 const video = computed(() => store.state.videoDetail.items);
 
 
+let detailVideo = ref<Video>();
+const openDetail = ref<boolean>(false);
 
+const openVideoDetail = (id: String) => {
+    toggleOverlay();
+    const findVideo = video.value.find(v => v.id === id);
+    if (findVideo) detailVideo.value = findVideo;
+}
+
+const toggleOverlay = () => {
+    openDetail.value = !openDetail.value;
+    handleBaseOverlay(openDetail.value ? 'open' : 'close')
+}
 </script>
 
 <template>
 
     <div class="mt-12 border border-red-200 px-4">
-        <swiper space-between="10" :pagination="true" :modules="modules" :breakpoints="swiperBreakpoint" class="mySwiper h-[350px]">
+        <swiper space-between="10" :pagination="true" :modules="modules" :breakpoints="swiperBreakpoint" class="mySwiper h-[500px]">
             <swiper-slide v-for="vid in video" :key="vid.id">
-                <VideoCard :video="vid"/>
-                <!-- <div class="bg-blue-300">
-                    Hello World
-                    <img :src="getThumbnailsUrl(vid)" alt="">
-                </div> -->
+                <VideoCard :video="vid" @open-video-detail="openVideoDetail(vid.id)"/>
             </swiper-slide>
         </swiper>
     </div>
+    
+
+    <VideoDetail v-if="openDetail" :video="detailVideo" :open-detail="openDetail" @toggle-overlay="toggleOverlay" />
 
 </template>
