@@ -31,10 +31,17 @@
     @apply duration-700 transition-all ease-in-out
 }
 
-.fade-enter-from, .fade-leave-to {
+.fade-300-enter-active,
+.fade-300-leave-active {
+    @apply duration-300 transition-all ease-in-out
+}
+
+.fade-enter-from, .fade-leave-to,
+.fade-300-enter-from, .fade-300-leave-to {
     @apply opacity-0
 }
 
-.fade-enter-to, .fade-leave-from {
+.fade-enter-to, .fade-leave-from,
+.fade-300-enter-to, .fade-300-leave-from {
     @apply opacity-100
 }

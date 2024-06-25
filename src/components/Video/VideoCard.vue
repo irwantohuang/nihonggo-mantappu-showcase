@@ -16,23 +16,11 @@ const handleMouseLeave = () => show.value = false
 
 <template>
     <div class="relative">
-        <div class="relative h-auto rounded-md overflow-hidden bg-red-300" @mouseenter="handleMouseEnter()"
+        <div class="relative h-auto rounded-md overflow-hidden bg-primary-light-200" @mouseenter="handleMouseEnter()"
             @mouseleave="handleMouseLeave()">
             <Thumbnail :video="video" />
 
             <ThumbnailOverlay :show="show" :videoId="video?.contentDetails.videoId" transition-name="fade-up" overlay-type="button" />
-
-            <!-- <Transition name="fade-up">
-                <div v-show="show"
-                    class="absolute inset-x-0 top-0 rounded-md bg-primary-dark/75 flex items-center justify-center h-full">
-                    <button class="text-sm btn btn-primary">
-                        <a :href="`https://www.youtube.com/watch?v=${video?.contentDetails.videoId}`" target="_blank">
-                            Watch Now
-                            <fa-icon class="ms-1" icon="fa-solid fa-up-right-from-square" />
-                        </a>
-                    </button>
-                </div>
-            </Transition> -->
         </div>
 
         <div class="mt-1 px-1">

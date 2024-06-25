@@ -23,6 +23,10 @@ export const mutations: MutationTree<VideoState> = {
 
     SET_VIDEO(state, result) {
         state.pagination = result;
+    },
+
+    SET_LOADING(state, payload) {
+        state.loading = payload;
     }
 
 }

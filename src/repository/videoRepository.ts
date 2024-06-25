@@ -1,5 +1,6 @@
 import api from "../boot/axios";
 import { VideoRequest } from "../request/VideoRequest";
+import { store } from "../store/store";
 import { Pagination } from "../types/Pagination";
 import { Video } from "../types/Video";
 
@@ -21,7 +22,7 @@ export const findVideo = async (req: VideoRequest): Promise<Video[]> => {
 
 
 export const findVideoPartial = async (req: VideoRequest): Promise<Pagination> => {
-    console.log('video repo, find partial ', req)
+    store.commit("videoDetail/SET_LOADING", true)
     try {
         const resp = await api('/videos', {
             params: {
@@ -34,5 +35,7 @@ export const findVideoPartial = async (req: VideoRequest): Promise<Pagination> =
     } catch (error) {
         console.log('error video repository ', error);
         throw error;
+    } finally {
+        store.commit("videoDetail/SET_LOADING", false)
     }
 }

@@ -27,9 +27,8 @@ export const fetchPartial = async (request: VideoRequest, playlist: Pagination):
 
         const video: Video[] = playlist.items.map((p: Video) => {
             const mapping: Video | undefined = response.items.find(vid => vid.id === p.contentDetails.videoId)
-            return assignVideo(mapping);
+            return assignVideoDetail(p, mapping);
         })
-
         const result = assignPagination(playlist.nextPageToken, video);
         return result;
     } catch (error) {
@@ -56,16 +55,13 @@ export const fetchMostWatch = async () => {
     store.commit('videoDetail/CLEAR_ITEM')
     store.commit('playlistItem/CLEAR_ITEM')
 
-
     return sort.slice(0, 10)
-
-
 }
 
 
 export const fetchPaginationVideo = async () => {
     const pageToken = store.state.videoDetail.pagination.nextPageToken;
-    await helpFetchPlaylist(30, pageToken);
+    await helpFetchPlaylist(6, pageToken);
     const playlist = store.state.playlistItem.items;
 
     return playlist

@@ -17,6 +17,7 @@ export const actions: ActionTree<VideoState, RootState> = {
     },
 
     getPaginationVideo: async ({ commit, state }) => {
+        commit("SET_LOADING", true)
         const playlist = await fetchPaginationVideo();
 
         const videoIds = playlist.items.map(v => v.contentDetails.videoId)
