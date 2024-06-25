@@ -2,23 +2,14 @@
 import { computed, onMounted, ref } from 'vue';
 import { Pagination } from 'swiper/modules'
 import { store } from '../../store/store';
-import { PlaylistItemRequest, assignPlaylistItemRequest } from '../../request/PlaylistItemRequest';
 import VideoCard from '../Video/VideoCard.vue'
 import { Video } from '../../types/Video';
 import VideoDetail from '../Video/VideoDetail.vue';
 import { handleBaseOverlay } from '../../utils/overlayHelper';
 
 
-const request = ref<PlaylistItemRequest>(
-    assignPlaylistItemRequest(
-        ['snippet', 'contentDetails'],
-        'video',
-        'PLXE8AUnn_XpX59_DocpuX5e2d9tG1pY5D',
-        10
-    )
-)
+onMounted(() => store.dispatch('videoDetail/getMostWatchVideos'));
 
-onMounted(() => store.dispatch('playlistItem/getAllPlaylistItems', request.value));
 const modules = [Pagination]
 const swiperBreakpoint = ref(
     {
@@ -27,12 +18,11 @@ const swiperBreakpoint = ref(
         1200: { slidesPerView: 3 }
     }
 )
-const video = computed(() => store.state.videoDetail.items);
 
+const video = computed(() => store.state.videoDetail.mostWatch);
 
 let detailVideo = ref<Video>();
 const openDetail = ref<boolean>(false);
-
 const openVideoDetail = (id: String) => {
     toggleOverlay();
     const findVideo = video.value.find(v => v.id === id);
@@ -47,8 +37,8 @@ const toggleOverlay = () => {
 
 <template>
 
-    <div class="mt-12 border border-red-200 px-4">
-        <swiper space-between="10" :pagination="true" :modules="modules" :breakpoints="swiperBreakpoint" class="mySwiper h-[500px]">
+    <div class="mt-2">
+        <swiper space-between="10" :pagination="true" :modules="modules" :breakpoints="swiperBreakpoint" class="mySwiper pb-8">
             <swiper-slide v-for="vid in video" :key="vid.id">
                 <VideoCard :video="vid" @open-video-detail="openVideoDetail(vid.id)"/>
             </swiper-slide>
@@ -56,6 +46,6 @@ const toggleOverlay = () => {
     </div>
     
 
-    <VideoDetail v-if="openDetail" :video="detailVideo" :open-detail="openDetail" @toggle-overlay="toggleOverlay" />
+    <VideoDetail :video="detailVideo" :open-detail="openDetail" @toggle-overlay="toggleOverlay" />
 
 </template>

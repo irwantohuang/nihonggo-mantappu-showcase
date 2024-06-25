@@ -24,3 +24,17 @@
 .fade-up-enter-to, .fade-up-leave-from {
     @apply translate-y-0
 }
+
+
+.fade-enter-active,
+.fade-leave-active {
+    @apply duration-700 transition-all ease-in-out
+}
+
+.fade-enter-from, .fade-leave-to {
+    @apply opacity-0
+}
+
+.fade-enter-to, .fade-leave-from {
+    @apply opacity-100
+}

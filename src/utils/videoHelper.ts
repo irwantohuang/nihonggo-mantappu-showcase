@@ -12,16 +12,22 @@ export const convertToMMSS = (durationISO: string): string | undefined => {
     }
 }
 
-export const formatView = (viewCount: number): string => {
-    return numeral(viewCount).format('0.[0]a').toUpperCase() + ' Views';
+export const formatNumeral = (viewCount: number): string => {
+    return numeral(viewCount).format('0.[0]a').toUpperCase();
 }
 
 export const formatTimeAgo = (publishedAt: string): string => {
     if (publishedAt) {
+        console.log('pub', publishedAt);
+        
         const date = new Date(publishedAt);
         const formatted = formatDistanceToNow(date, { addSuffix: true })
+        console.log('pub', formatted);
+
         const splitText = formatted.split(' ')
-        return `Posted ${splitText[1]} ${splitText[2]} ${splitText[3]}`
+        const filterText = splitText.filter(word => word !== 'about');
+        
+        return `Posted ${filterText.join(' ')}`
     } else return '';
 }
 
@@ -33,18 +39,20 @@ export const formatDate = (publishedAt: string): string => {
 
 
 export const formatDescription = (desc: string): string[] => {
-    const withLink = desc.replace(
-        /https:\/\/\S+/g,
-        '<a href="$&" target="_blank" class="text-blue-500">$&</a>'
-    );
-
-    let parts = withLink.split(/\n\n/);
-    for (let i = 0; i < parts.length; i++) {
-        parts[i] = parts[i].replace(
-            /(<\/a>|\bPartnership:\s+.*?\(\+\d+\)|\bTokopedia:)\s*/g,
-            '$1<br>'
+    if (desc) {
+        const withLink = desc.replace(
+            /https:\/\/\S+/g,
+            '<a href="$&" target="_blank" class="text-blue-500">$&</a>'
         );
-    }
-
-    return parts;
+    
+        let parts = withLink.split(/\n\n/);
+        for (let i = 0; i < parts.length; i++) {
+            parts[i] = parts[i].replace(
+                /(<\/a>|\bPartnership:\s+.*?\(\+\d+\)|\bTokopedia:)\s*/g,
+                '$1<br>'
+            );
+        }
+    
+        return parts;
+    } else return [''];
 }

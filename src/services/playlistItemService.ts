@@ -1,13 +1,13 @@
-import { findPlaylist } from "../repository/playlistItemRepository";
+import { findAll } from "../repository/playlistItemRepository";
 import { PlaylistItemRequest } from "../request/PlaylistItemRequest";
 import { Video } from "../types/Video";
 
 export const fetchAll = async (req: PlaylistItemRequest): Promise<Video[]> => {
     try {
-        const resp: Video[] = await findPlaylist(req);
+        const resp: Video[] = await findAll(req);
         return resp;
     } catch (error) {
-        console.error('Error fetching all playlist items:', error);
-        throw error; // Melemparkan error untuk ditangani di tempat lain
+        console.error('[services] error fetch all playlist: ', error);
+        throw error; 
     }
 }

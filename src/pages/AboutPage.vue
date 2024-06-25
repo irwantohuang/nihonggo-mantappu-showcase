@@ -1,5 +1,9 @@
+<script setup lang="ts">
+import AboutView from '../views/About/AboutView.vue'
+</script>
+
 <template>
-
-<h1>About Page</h1>
-
+    <div class="z-[99]">
+        <AboutView />
+    </div>
 </template>

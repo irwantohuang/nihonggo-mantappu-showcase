@@ -13,7 +13,7 @@ const toggleHamburger = () => {
 </script>
 
 <template>
-    <header class="sticky top-0 h-[70px] bg-primary z-30">
+    <header class="sticky top-0 h-[70px] bg-primary z-[100]">
         <div class="container mx-auto h-full">
             <div class="flex justify-between items-center h-full">
                 <div class="w-[150px] h-[55px] overflow-hidden">

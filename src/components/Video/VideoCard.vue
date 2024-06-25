@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { formatView, formatDate } from '../../utils/videoHelper'
+import { formatNumeral, formatDate } from '../../utils/videoHelper'
 import DetailButton from '../../ui/DetailButton.vue';
 import Thumbnail from './Thumbnail.vue'
+import ThumbnailOverlay from './ThumbnailOverlay.vue';
 
 defineProps({
     video: Object
@@ -19,7 +20,9 @@ const handleMouseLeave = () => show.value = false
             @mouseleave="handleMouseLeave()">
             <Thumbnail :video="video" />
 
-            <Transition name="fade-up">
+            <ThumbnailOverlay :show="show" :videoId="video?.contentDetails.videoId" transition-name="fade-up" overlay-type="button" />
+
+            <!-- <Transition name="fade-up">
                 <div v-show="show"
                     class="absolute inset-x-0 top-0 rounded-md bg-primary-dark/75 flex items-center justify-center h-full">
                     <button class="text-sm btn btn-primary">
@@ -29,13 +32,13 @@ const handleMouseLeave = () => show.value = false
                         </a>
                     </button>
                 </div>
-            </Transition>
+            </Transition> -->
         </div>
-        
+
         <div class="mt-1 px-1">
             <DetailButton @click="$emit('openVideoDetail', video?.id)" :name="video?.snippet.title"></DetailButton>
             <div class="mt-2 flex items-center justify-between">
-                <p class="text-xs font-medium opacity-50">{{ formatView(video?.contentDetails.viewCount) }}</p>
+                <p class="text-xs font-medium opacity-50">{{ formatNumeral(video?.contentDetails.viewCount) }} Views</p>
                 <p class="text-xs font-medium opacity-50">{{ formatDate(video?.snippet.publishedAt) }}</p>
             </div>
         </div>
