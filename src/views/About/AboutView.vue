@@ -40,12 +40,12 @@ const changeActive = (id: number) => {
 
             <div class="mt-12 flex flex-col lg:flex-row gap-2">
                 <div class="flex items-center justify-center flex-col gap-4 lg:w-[750px]">
-                        <div class="w-full h-[350px] md:h-[400px] lg:h-[450px] overflow-hidden relative">
+                        <div class="w-full h-[350px] md:h-[400px] lg:h-[450px] overflow-hidden relative rounded-3xl">
                             <AboutImage :team="activeMember" :active="true" />
                         </div>
 
                     <div class="flex flex-row gap-2 w-full items-center justify-center">
-                        <div class="w-[33%] h-[150px] overflow-hidden relative" v-for="team in inActiveMember" :key="team.id" @click="changeId(team.id)">
+                        <div class="w-[33%] h-[150px] transition-all duration-200 ease-in-out hover:bg-primary-dark-200/15 overflow-hidden relative rounded-2xl" v-for="team in inActiveMember" :key="team.id" @click="changeId(team.id)">
                             <AboutImage :team="team" :active="false" />
                         </div>
                     </div>

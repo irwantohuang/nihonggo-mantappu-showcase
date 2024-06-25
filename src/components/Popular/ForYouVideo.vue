@@ -40,7 +40,7 @@ const toggleOverlay = () => {
     <div class="mt-2">
         <swiper space-between="10" :pagination="true" :modules="modules" :breakpoints="swiperBreakpoint" class="mySwiper pb-8">
             <swiper-slide v-for="vid in video" :key="vid.id">
-                <VideoCard :video="vid" @open-video-detail="openVideoDetail(vid.id)"/>
+                <VideoCard class="mt-2" :video="vid" @open-video-detail="openVideoDetail(vid.id)"/>
             </swiper-slide>
         </swiper>
     </div>

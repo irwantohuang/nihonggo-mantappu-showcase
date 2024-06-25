@@ -20,8 +20,8 @@ const member = ref(teams.find(t => t.id === 1))
             <div class="flex flex-col lg:flex-row item-start justify-between gap-8">
 
                 <div class="order-1 lg:order-2 flex gap-6 items-start w-full lg:w-1/4">
-                    <div class="lg:order-2 w-[100px] h-[100px] rounded-full overflow-hidden">
-                        <img :src="channel?.profilePicture" :alt="channel?.title" class="w-full h-full object-cover">
+                    <div class="group lg:order-2 w-[100px] h-[100px] rounded-full overflow-hidden">
+                        <img :src="channel?.profilePicture" :alt="channel?.title" class="hover:scale-[110%] transition-all duration-300 ease-in w-full h-full object-cover">
                     </div>
 
                     <div class="lg:order-1 flex flex-col items-start lg:items-end mt-2">

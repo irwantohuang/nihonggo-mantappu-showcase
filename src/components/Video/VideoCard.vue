@@ -15,7 +15,7 @@ const handleMouseLeave = () => show.value = false
 </script>
 
 <template>
-    <div class="relative">
+    <div class="relative rounded-md overflow-hidden transition-all duration-300 ease-in hover:-translate-y-2">
         <div class="relative h-auto rounded-md overflow-hidden bg-primary-light-200" @mouseenter="handleMouseEnter()"
             @mouseleave="handleMouseLeave()">
             <Thumbnail :video="video" />
