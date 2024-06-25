@@ -34,8 +34,6 @@ export const findAll = async (req: PlaylistItemRequest): Promise<Video[]> => {
 
 
 export const findPartial = async (req: PlaylistItemRequest, pageToken: string): Promise<Pagination> => {
-
-    console.log('req', req)
     try {
         const response: any = await api.get('playlistItems', {
             params: {

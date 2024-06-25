@@ -8,9 +8,6 @@ import { Channel, assignChannel } from "../../../types/Channel";
 export const actions: ActionTree<ChannelState, RootState> = {
     getChannel: async({ commit }, request: ChannelRequest) => {
         const result = await fetchChannel(request)
-
-        console.log('ini res', result);
-        
         const res: Channel = assignChannel(result);
         commit("SET_CHANNEL", res)
     }

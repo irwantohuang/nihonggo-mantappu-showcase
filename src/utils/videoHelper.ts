@@ -18,11 +18,8 @@ export const formatNumeral = (viewCount: number): string => {
 
 export const formatTimeAgo = (publishedAt: string): string => {
     if (publishedAt) {
-        console.log('pub', publishedAt);
-        
         const date = new Date(publishedAt);
         const formatted = formatDistanceToNow(date, { addSuffix: true })
-        console.log('pub', formatted);
 
         const splitText = formatted.split(' ')
         const filterText = splitText.filter(word => word !== 'about');
