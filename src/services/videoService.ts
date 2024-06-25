@@ -2,7 +2,7 @@ import { findVideo, findVideoPartial } from "../repository/videoRepository";
 import { VideoRequest } from "../request/VideoRequest";
 import { store } from "../store/store";
 import { Pagination, assignPagination } from "../types/Pagination";
-import { Video, assignVideo, assignVideoDetail } from "../types/Video";
+import { Video, assignVideoDetail } from "../types/Video";
 import { helpFetchAllPlaylist, helpFetchPlaylist, helpFetchAllVideo } from "../utils/fetchHelper";
 
 export const fetchAll = async (request: VideoRequest, playlist: Video[]): Promise<Video[]> => {

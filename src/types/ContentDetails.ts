@@ -1,5 +1,3 @@
-import { Video } from "./Video";
-
 export interface ContentDetails {
     videoId: string,
     videoDuration: string,

@@ -1,4 +1,4 @@
-import { Video, assignVideo, initVideo } from "./Video";
+import { Video, initVideo } from "./Video";
 
 export interface Pagination {
     nextPageToken: string,
