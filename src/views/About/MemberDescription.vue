@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import SocialMedia from '../../common/SocialMedia.vue'
 defineProps({
     member: Object
 })
@@ -11,11 +12,7 @@ defineProps({
         </p>
 
         <div class="mt-4 lg:mt-8 flex flex-row gap-6">
-            <a v-for="(social, index) in member?.socialMedia" :key="index" :href="social.link" target="_blank"
-                class="text-4xl  w-[50px] h-[50px] flex items-center justify-center rounded-md transition-all duration-300 ease-linear"
-                :class="social.link === '' ? 'text-primary-200/50 cursor-no-drop' : 'text-primary-200 hover:text-primary/85 cursor-pointer  '">
-                <fa-icon :icon="social.icon" />
-            </a>
+            <SocialMedia :socialMedia="member?.socialMedia" />
         </div>
     </div>
 </template>

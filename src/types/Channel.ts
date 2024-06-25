@@ -29,7 +29,7 @@ export const assignChannel = (result: any): Channel => {
         description: result[0].snippet.description,
         url: result[0].snippet.customUrl,
         publishedAt: result[0].snippet.publishedAt,
-        profilePicture: result[0].snippet.thumbnails.default.url,
+        profilePicture: result[0].snippet.thumbnails.high.url,
         statistics: assignChannelStatistice(result[0].statistics)
     }
 }

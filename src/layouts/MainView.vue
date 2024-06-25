@@ -5,7 +5,7 @@ import PageTransition from '../components/PageTransition.vue'
 </script>
 
 <template>
-    <main class="h-auto pb-[120px] max-w-[1920px] mx-auto overflow-hidden">
+    <main class="h-auto max-w-[1920px] mx-auto overflow-hidden">
         <RouterView v-slot="{ Component }">
             <Transition name="fade" mode="out-in">
                 <Component :is="Component" />
