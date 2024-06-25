@@ -1,8 +1,9 @@
-import { findVideo } from "../repository/videoRepository";
+import { findVideo, findVideoPartial } from "../repository/videoRepository";
 import { VideoRequest } from "../request/VideoRequest";
 import { store } from "../store/store";
-import { Video, assignVideoDetail } from "../types/Video";
-import { helpFetchAllPlaylist, helpFetchAllVideo } from "../utils/fetchHelper";
+import { Pagination, assignPagination } from "../types/Pagination";
+import { Video, assignVideo, assignVideoDetail } from "../types/Video";
+import { helpFetchAllPlaylist, helpFetchPlaylist, helpFetchAllVideo } from "../utils/fetchHelper";
 
 export const fetchAll = async (request: VideoRequest, playlist: Video[]): Promise<Video[]> => {
     try {
@@ -20,9 +21,26 @@ export const fetchAll = async (request: VideoRequest, playlist: Video[]): Promis
     }
 } 
 
+export const fetchPartial = async (request: VideoRequest, playlist: Pagination): Promise<Pagination> => {
+    try {
+        const response: Pagination = await findVideoPartial(request);
+
+        const video: Video[] = playlist.items.map((p: Video) => {
+            const mapping: Video | undefined = response.items.find(vid => vid.id === p.contentDetails.videoId)
+            return assignVideo(mapping);
+        })
+
+        const result = assignPagination(playlist.nextPageToken, video);
+        return result;
+    } catch (error) {
+        console.log('[video service error] ', error)
+        throw error;
+    }
+}
+
 export const fetchMostWatch = async () => {
     await helpFetchAllPlaylist(50);
-    const playlist = store.state.playlistItem.items;
+    const playlist = store.state.playlistItem.allItems;
 
     let video: Video[] = [];
     for ( let i = 0; i < playlist.length; i += 50 ) {
@@ -35,5 +53,20 @@ export const fetchMostWatch = async () => {
         return b.contentDetails.viewCount - a.contentDetails.viewCount;
     })
 
+    store.commit('videoDetail/CLEAR_ITEM')
+    store.commit('playlistItem/CLEAR_ITEM')
+
+
     return sort.slice(0, 10)
+
+
+}
+
+
+export const fetchPaginationVideo = async () => {
+    const pageToken = store.state.videoDetail.pagination.nextPageToken;
+    await helpFetchPlaylist(30, pageToken);
+    const playlist = store.state.playlistItem.items;
+
+    return playlist
 }

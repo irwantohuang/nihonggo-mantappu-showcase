@@ -13,7 +13,7 @@ const playlistRequest = (maxResults: number) => {
     )
 }
 
-const videoRequest = (videoId: string[]) => {
+export const videoRequest = (videoId: string[]) => {
     return assignVideoRequest(
         ['snippet', 'contentDetails', 'statistics'], videoId
     );
@@ -22,6 +22,11 @@ const videoRequest = (videoId: string[]) => {
 export const helpFetchAllPlaylist = async (maxResults: number) => {
     const request = playlistRequest(maxResults);
     await store.dispatch('playlistItem/getAllPlaylistItems', request)
+}
+
+export const helpFetchPlaylist = async (maxResults: number, pageToken: string | '') => {
+    const request = playlistRequest(maxResults);
+    await store.dispatch('playlistItem/getPlaylistItems', {request, pageToken});
 }
 
 export const helpFetchAllVideo = async (playlist: Video[]) => {

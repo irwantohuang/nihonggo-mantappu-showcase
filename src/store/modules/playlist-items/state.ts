@@ -1,9 +1,12 @@
+import { Pagination, initPagination } from "../../../types/Pagination";
 import { Video, initVideo } from "../../../types/Video";
 
 export interface PlaylistItemsState {
-    items: Video[]
+    allItems: Video[],
+    items: Pagination
 }
 
 export const state: PlaylistItemsState = {
-    items: [initVideo()]
+    allItems: [initVideo()],
+    items: initPagination(),
 }
