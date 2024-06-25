@@ -34,8 +34,8 @@ const changeActive = (id: number) => {
     <section id="about" class="relative py-[75px]">
         <div class="container mx-auto">
             <div class="title">
-                <h1 class="text-2xl lg:text-5xl font-medium text-primary">Waseda Boys</h1>
-                <p class="text-sm font-normal text-primary-dark-200">Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, itaque!</p>
+                <h1 class="text-2xl lg:text-5xl font-medium text-primary">Waseda Boys Teams</h1>
+                <!-- <p class="text-sm font-normal text-primary-dark-200">Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, itaque!</p> -->
             </div>
 
             <div class="mt-12 flex flex-col lg:flex-row gap-2">
