@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import AboutImage from './AboutImage.vue'
-import BiodataDetail from './BiodataDetail.vue'
-import MemberDescription from './MemberDescription.vue'
+import AboutImage from '../../components/About/AboutImage.vue'
+import BiodataDetail from '../../components/About/BiodataDetail.vue'
+import MemberDescription from '../../components/About/MemberDescription.vue'
 import { onMounted, ref, watch } from 'vue';
 import { teams } from '../../data/team'
 import { Teams } from '../../types/Teams/Teams';
