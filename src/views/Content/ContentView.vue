@@ -10,9 +10,9 @@ const loadMore = () => store.dispatch('videoDetail/getPaginationVideo')
 
 <template>
 
-    <section id="content" class="relative mx-auto z-[30] py-[12px]">
+    <section id="content" class="relative mx-auto z-[30] py-[75px]">
         <div class="container mx-auto">
-            <h1 class="text-3xl font-primary font-semibold text-primary text-center">Content</h1>
+            <h1 class="text-3xl font-primary font-semibold text-primary text-center">World Trip Content</h1>
 
 
             <transition-group v-if="video?.items.length > 1" name="fade-300" tag="div" class="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-6 lg:gap-8">
