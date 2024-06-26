@@ -45,7 +45,7 @@ const toggleOverlay = () => {
                 <div v-if="loading" class="flex gap-2 mb-4">
                     <div v-for="n in 3" :key="n" class="w-5 h-5 rounded-full animate-pulse bg-primary"></div>
                 </div>
-                <button v-else @click="loadMore()" class="btn btn-primary">Load more</button>
+                <button v-else-if="video?.nextPageToken" @click="loadMore()" class="btn btn-primary">Load more</button>
             </div>
         </div>
     </section>
