@@ -27,13 +27,13 @@ const handleMouseLeave = () => show.value = false
             <div v-if="openDetail"
                 class="z-[1001] bg-primary-light fixed inset-y-0 right-0 shadow-2xl w-full md:w-[80%] flex">
                 <Icon @click="$emit('toggleOverlay')" icon="fa-solid fa-xmark" type="Primary"
-                    class="text-3xl w-[30px] h-[30px] absolute top-4 right-4 " />
+                    class="text-3xl w-[30px] h-[30px] z-[99] absolute top-4 right-4 " />
 
 
-                <div class="container mx-auto py-[35px]">
+                <div class="container relative mx-auto py-[20px]">
 
-                    <header>
-                        <h1 class="md:max-w-[400px] lg:max-w-[600px] lg:text-base text-left text-sm font-medium opacity-75 transition-all duration-100 ease-in text-primary-dark hover:text-primary-dark-200">
+                    <header class="max-w-sm md:max-w-lg lg:max-w-xl ">
+                        <h1 class="lg:text-base text-left text-sm font-medium opacity-75 transition-all duration-100 ease-in text-primary-dark hover:text-primary-dark-200">
                             {{ video?.snippet.title }}
                         </h1>
                         
@@ -50,7 +50,7 @@ const handleMouseLeave = () => show.value = false
                     <div class="border-t border-primary-light-300/50 my-4"></div>
 
 
-                    <div class="overflow-scroll max-h-[380px]">
+                    <div class="overflow-scroll h-full pb-[250px]">
                         <div class="flex flex-col md:flex-row gap-4">
                             <div @mouseenter="handleMouseEnter()" @mouseleave="handleMouseLeave()" class="hover:scale-[102%] aspect-video md:w-[400px] lg:w-[600px] relative rounded-md overflow-hidden">
                                 <Thumbnail :video="video" />
