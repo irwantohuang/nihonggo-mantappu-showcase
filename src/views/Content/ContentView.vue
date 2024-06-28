@@ -27,7 +27,7 @@ const toggleOverlay = () => {
 
 <template>
 
-    <section id="content" class="relative mx-auto z-[30] py-[75px]">
+    <section id="content" class="relative mx-auto z-[30] py-[25px]">
         <div class="container mx-auto">
             <h1 class="text-3xl font-primary font-semibold text-primary text-center">World Trip Content</h1>
 

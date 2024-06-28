@@ -31,7 +31,7 @@ const changeActive = (id: number) => {
 
 <template>
 
-    <section id="about" class="relative py-[75px]">
+    <section id="about" class="relative py-[25px]">
         <div class="container mx-auto">
             <div class="title">
                 <h1 class="text-2xl lg:text-5xl font-medium text-primary">Waseda Boys Teams</h1>
